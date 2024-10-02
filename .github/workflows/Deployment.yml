@@ -13,11 +13,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Set up JDK (if needed)
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'  # Adjust if you're using a different version
-
       - name: Set up Minikube
         run: |
           curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
