@@ -25,16 +25,13 @@ jobs:
         CLUSTER_NAME="my-project-cluster"
         NODE_GROUP_NAME="my-node-group"
         
-        # Create the EKS cluster
         aws eks create-cluster --name $CLUSTER_NAME \
           --kubernetes-version 1.21 \
           --role-arn arn:aws:iam::<your-account-id>:role/EKSClusterRole \
           --resources-vpc-config subnetIds=<subnet-1>,<subnet-2>,securityGroupIds=<sg-id>
 
-        # Wait for the cluster to be active
         aws eks wait cluster-active --name $CLUSTER_NAME
 
-        # Create the node group
         aws eks create-nodegroup --cluster-name $CLUSTER_NAME \
           --nodegroup-name $NODE_GROUP_NAME \
           --node-role arn:aws:iam::<your-account-id>:role/EKSNodeRole \
